@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface-elevated: #fefefe;
+  --border: #e0e0e0;
+  --text-muted: #7a7a7a;
+  --text-primary: #1a1a1a;
+}
+
+[data-theme="dark"] {
+  --bg: #1a1c1a;
+  --surface: #252826;
+  --surface-elevated: #181a18;
+  --border: #333634;
+  --text-muted: #656866;
+  --text-primary: #e2e2e2;
+}
+
+* {
+  transition: 0.3s !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
