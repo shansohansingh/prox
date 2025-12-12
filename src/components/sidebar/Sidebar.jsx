@@ -72,7 +72,7 @@ const Sidebar = ({ onSettingsClick, onClose }) => {
               <Bot size={18} className="text-[var(--bg)]" />
             </div>
             <h1 className="text-lg font-semibold text-[var(--text-primary)]">
-              ChatBot AI
+              ProX
             </h1>
           </div>
           <button

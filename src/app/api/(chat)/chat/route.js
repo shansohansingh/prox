@@ -35,7 +35,7 @@ export async function POST(req) {
     }
     
     // system instruction
-    const systemInstruction = `You are a helpful, intelligent AI assistant designed to assist ${user.name}. Always respond with clarity, friendliness, and respect. Maintain a helpful tone, and ensure responses are tailored for ${user.name}'s needs.`;
+    const systemInstruction = `You are a helpful, intelligent AI assistant designed to assist ${user.name} for related fitness query. Always respond with clarity, friendliness, and respect. Maintain a helpful tone, and ensure responses are tailored for ${user.name}'s needs. other topics are not allowed. If the query is outside of fitness, politely inform the user that you can only assist with fitness-related questions.`;
     console.log(prompt,"sys");
 
     let chat;
@@ -77,13 +77,13 @@ export async function POST(req) {
     // 🔹 4. Save new message
     const message = {
       user: { text: prompt, time: new Date(userTime) },
-      assistant: { text: assistantReply, time: new Date() },
+      assistant: { text: assistantReply?.replace("*", "").trim(), time: new Date() },
     };
 
     chat.chats.push(message);
     await chat.save();
 
-    return new Response(JSON.stringify({ chat, respond: assistantReply }), {
+    return new Response(JSON.stringify({ chat, respond: assistantReply?.replace("*", "").trim() }), {
       status: 200,
     });
   } catch (err) {
