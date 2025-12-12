@@ -73,13 +73,13 @@ export async function POST(req) {
 
     const message = {
       user: { text: prompt, time: new Date(userTime) },
-      assistant: { text: assistantReply, time: new Date() },
+      assistant: { text: assistantReply?.replace("*", "").trim(), time: new Date() },
     };
 
     chat.chats.push(message);
     await chat.save();
 
-    return new Response(JSON.stringify({ chat, respond: assistantReply }), {
+    return new Response(JSON.stringify({ chat, respond: assistantReply?.replace("*", "").trim() }), {
       status: 200,
     });
   } catch (err) {

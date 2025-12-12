@@ -55,5 +55,5 @@ export async function getGeminiResponse(history, systemInstruction = "") {
     data.candidates?.[0]?.output_text ||
     "";
 
-  return text;
+  return text?.replace("*", "").trim();
 }
